@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,6 +26,29 @@ namespace SumOfAllFearsMVC.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult Solution()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Solution(int k)
+        {
+            int[] arr = { 10, 15, 3, 7 };
+            var result = new StringBuilder();
+            for(int i = 0; i < arr.Length; i++)
+            {
+                var test = k - arr[i];
+                if(arr.Contains(test))
+                {
+                    result.Append(arr[i].ToString() + " and " + test.ToString());
+                    break;
+                }
+            }
+            ViewData["Data"] = result;
             return View();
         }
 
